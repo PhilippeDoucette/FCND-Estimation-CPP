@@ -2,15 +2,16 @@
 
 Submission for the FCND-Controls-CPP project for Philippe Doucette.
 
-***1. Determine the standard deviation of the measurement noise of both GPS X data and Accelerometer X data.***
+### Step 1: Sensor Noise ###
+***Determine the standard deviation of the measurement noise of both GPS X data and Accelerometer X data.***
 
-The calculated standard deviation should correctly capture ~68% of the sensor measurements. Your writeup should describe the method used for determining the standard deviation given the simulated sensor measurements.
+The calculated standard deviation correctly captures ~68% of the sensor measurements. 
 
 The quad simulator was run under scenario `06_SensorNoise` to generate log files `\config\log\Graph1` and `\config\log\Graph2`.  This data was pulled into a spreadsheet and analyzed to generate standard deviation:
 
 ![GPS & IMU Standard Deviation](images/Quad_SD.jpg)
 
-These standard deviations were plugged into   config/6_Sensornoise.txt` by updating 1MeasuredStdDev_GPSPosXY` and `MeasuredStdDev_AccelXY`.
+These standard deviations were plugged into `config/6_SensorNoise.txt` by updating `MeasuredStdDev_GPSPosXY` and `MeasuredStdDev_AccelXY`.
 ```
 MeasuredStdDev_GPSPosXY = 0.723312024
 MeasuredStdDev_AccelXY = 0.4897387239
