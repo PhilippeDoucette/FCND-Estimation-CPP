@@ -6,8 +6,19 @@ Submission for the FCND-Controls-CPP project for Philippe Doucette.
 
 The calculated standard deviation should correctly capture ~68% of the sensor measurements. Your writeup should describe the method used for determining the standard deviation given the simulated sensor measurements.
 
+The quad simulator was run under scenario `06_SensorNoise` to generate log files `\config\log\Graph1` and `\config\log\Graph2`.  This data was pulled into a spreadsheet and analyzed to generate standard deviation:
 
 ![GPS & IMU Standard Deviation](images/Quad_SD.jpg)
+
+These standard deviations were plugged into   config/6_Sensornoise.txt` by updating 1MeasuredStdDev_GPSPosXY` and `MeasuredStdDev_AccelXY`.
+```
+MeasuredStdDev_GPSPosXY = 0.723312024
+MeasuredStdDev_AccelXY = 0.4897387239
+```
+
+Running the sumulator again, indicates successful capture of 68% of respective measurements:
+
+![SensorNoise](images/6_SensorNoise.png)
 
 
 ***2. Implement a better rate gyro attitude integration scheme in the `UpdateFromIMU()` function.***
