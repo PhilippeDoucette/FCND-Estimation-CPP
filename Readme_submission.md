@@ -1,14 +1,14 @@
+# FCND-Estimation-CPP project Submission #
 
-
-
-
-
-
-
+Submission for the FCND-Controls-CPP project for Philippe Doucette.
 
 ***1. Determine the standard deviation of the measurement noise of both GPS X data and Accelerometer X data.***
 
 The calculated standard deviation should correctly capture ~68% of the sensor measurements. Your writeup should describe the method used for determining the standard deviation given the simulated sensor measurements.
+
+
+![GPS & IMU Standard Deviation](images/Quad_SD.jpg)
+
 
 ***2. Implement a better rate gyro attitude integration scheme in the `UpdateFromIMU()` function.***
 
