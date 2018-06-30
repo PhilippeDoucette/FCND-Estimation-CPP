@@ -21,10 +21,18 @@ Running the sumulator again, indicates successful capture of 68% of respective m
 
 ![SensorNoise](images/6_SensorNoise.png)
 
-
+### Step 2: Attitude Estimation ###
 ***2. Implement a better rate gyro attitude integration scheme in the `UpdateFromIMU()` function.***
 
-The improved integration scheme should result in an attitude estimator of < 0.1 rad for each of the Euler angles for a duration of at least 3 seconds during the simulation. The integration scheme should use quaternions to improve performance over the current simple integration scheme.
+The improved integration scheme results in an attitude estimator of < 0.1 rad for each of the Euler angles for a duration of at least 3 seconds during the simulation. 
+
+The integration scheme should use quaternions to improve performance over the current simple integration scheme.
+
+
+
+
+
+
 
 ***3. Implement all of the elements of the prediction step for the estimator.***
 
