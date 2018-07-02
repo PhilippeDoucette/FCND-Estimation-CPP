@@ -27,7 +27,7 @@ Running the sumulator again, indicates successful capture of 68% of respective m
 The improved integration scheme results in an attitude estimator of < 0.1 rad for each of the Euler angles for a duration of at least 3 seconds during the simulation. 
 
 The integration scheme used quaternions to improve performance over the current simple integration scheme.
-'''C++
+```C++
   float yawEst; 
   Quaternion<float> rotationStatePyor;
   Quaternion<float> rotationState;
@@ -41,7 +41,7 @@ The integration scheme used quaternions to improve performance over the current 
   float predictedYaw = rotationState.Yaw();
 
   ekfState(6) = predictedYaw;
-'''
+```
 
 `Simulation #2 (../config/07_AttitudeEstimation.txt)`
 `PASS: ABS(Quad.Est.E.MaxEuler) was less than 0.100000 for at least 3.000000 seconds`
