@@ -26,9 +26,27 @@ Running the sumulator again, indicates successful capture of 68% of respective m
 
 The improved integration scheme results in an attitude estimator of < 0.1 rad for each of the Euler angles for a duration of at least 3 seconds during the simulation. 
 
-The integration scheme should use quaternions to improve performance over the current simple integration scheme.
+The integration scheme used quaternions to improve performance over the current simple integration scheme.
+'''C++
+  float yawEst; 
+  Quaternion<float> rotationStatePyor;
+  Quaternion<float> rotationState;
+  
+  yawEst = ekfState(6);
+  rotationStatePyor = Quaternion<float>:: FromEuler123_RPY(rollEst, pitchEst, yawEst);
+  rotationState = rotationStatePyor.IntegrateBodyRate(gyro.getArray(), dtIMU);
 
+  float predictedPitch = rotationState.Pitch();
+  float predictedRoll = rotationState.Roll();
+  float predictedYaw = rotationState.Yaw();
 
+  ekfState(6) = predictedYaw;
+'''
+
+`Simulation #2 (../config/07_AttitudeEstimation.txt)`
+`PASS: ABS(Quad.Est.E.MaxEuler) was less than 0.100000 for at least 3.000000 seconds`
+
+![Attitude Estimation](images/7_AttitudeEstimation.png)
 
 
 
