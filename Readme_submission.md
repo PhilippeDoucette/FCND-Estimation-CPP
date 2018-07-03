@@ -89,13 +89,13 @@ GetRbgPrime(float roll, float pitch, float yaw)
   RbgPrime(1, 0) = cos(roll) * cos(yaw);
   RbgPrime(2, 0) = 0;
 
-  RbgPrime(0, 0) = -sin(pitch) * sin(roll) * sin(yaw) - cos(pitch) * cos(yaw);
-  RbgPrime(1, 0) = sin(pitch) * sin(roll) * cos(yaw) - cos(pitch) * sin(yaw);
-  RbgPrime(2, 0) = 0;
+  RbgPrime(0, 1) = -sin(pitch) * sin(roll) * sin(yaw) - cos(pitch) * cos(yaw);
+  RbgPrime(1, 1) = sin(pitch) * sin(roll) * cos(yaw) - cos(pitch) * sin(yaw);
+  RbgPrime(2, 1) = 0;
 
-  RbgPrime(0, 0) = -cos(pitch) * sin(roll) * sin(yaw) - sin(pitch) * cos(yaw);
-  RbgPrime(1, 0) = cos(pitch) * sin(roll)* cos(yaw) - sin(pitch) * sin(yaw);
-  RbgPrime(2, 0) = 0;
+  RbgPrime(0, 2) = -cos(pitch) * sin(roll) * sin(yaw) - sin(pitch) * cos(yaw);
+  RbgPrime(1, 2) = cos(pitch) * sin(roll)* cos(yaw) - sin(pitch) * sin(yaw);
+  RbgPrime(2, 2) = 0;
 ```
 
 
