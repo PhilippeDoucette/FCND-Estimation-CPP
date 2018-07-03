@@ -67,6 +67,7 @@ PredictState() function was developed as follows:
   ```
   
 8 PredictState tracks
+
 ![Predict State](images/8_PredictState.png)
 
 
