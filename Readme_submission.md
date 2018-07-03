@@ -65,6 +65,7 @@ PredictState() function was developed as follows:
 
   //predictedState(6) = ekfState(6);
   ```
+  
 8 PredictState tracks
 ![Predict State](images/8_PredictState.png)
 
