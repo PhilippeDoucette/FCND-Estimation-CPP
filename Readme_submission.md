@@ -29,6 +29,7 @@ The improved integration scheme results in an attitude estimator of < 0.1 rad fo
 
 The integration scheme used quaternions to improve performance over the current simple integration scheme.
 ```C++
+UpdateFromIMU(V3F accel, V3F gyro)
   float yawEst; 
   Quaternion<float> rotationStatePyor;
   Quaternion<float> rotationState;
@@ -50,8 +51,12 @@ The integration scheme used quaternions to improve performance over the current 
 
 The prediction step includs the state update element (PredictState() function), a correct calculation of the Rgb prime matrix, and a proper update of the state covariance. The acceleration is accounted for as a command in the calculation of gPrime. The covariance update follows the classic EKF update equation.
 
-PredictState() function was developed as follows:
+PredictState() function does a simple integration to advance the state of the control input. 
 ```C++
+PredictState(VectorXf curState, float dt, V3F accel, V3F gyro)
+  VectorXf predictedState = curState;
+  Quaternion<float> attitude = Quaternion<float>::FromEuler123_RPY(rollEst, pitchEst, curState(6));
+  
   V3F accel_global;
   
   accel_global = attitude.Rotate_BtoI(accel);
@@ -64,11 +69,38 @@ PredictState() function was developed as follows:
   predictedState(5) += accel_global.z * dt - 9.81f*dt;
 
   //predictedState(6) = ekfState(6);
+  
+  return predictedState;
   ```
   
 8 PredictState tracks
 
 ![Predict State](images/8_PredictState.png)
+
+
+GetRbgPrime() function returns g'() the Jacobian partial derivitive:
+```c++
+  
+GetRbgPrime(float roll, float pitch, float yaw)
+  MatrixXf RbgPrime(3, 3);
+  RbgPrime.setZero();
+  
+  RbgPrime(0, 0) = -cos(roll) * sin(yaw);
+  RbgPrime(1, 0) = cos(roll) * cos(yaw);
+  RbgPrime(2, 0) = 0;
+
+  RbgPrime(0, 0) = -sin(pitch) * sin(roll) * sin(yaw) - cos(pitch) * cos(yaw);
+  RbgPrime(1, 0) = sin(pitch) * sin(roll) * cos(yaw) - cos(pitch) * sin(yaw);
+  RbgPrime(2, 0) = 0;
+
+  RbgPrime(0, 0) = -cos(pitch) * sin(roll) * sin(yaw) - sin(pitch) * cos(yaw);
+  RbgPrime(1, 0) = cos(pitch) * sin(roll)* cos(yaw) - sin(pitch) * sin(yaw);
+  RbgPrime(2, 0) = 0;
+```
+
+
+
+
 
 
 ### Step 4: Magnetometer Update ###
