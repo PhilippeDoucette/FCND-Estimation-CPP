@@ -48,7 +48,26 @@ The integration scheme used quaternions to improve performance over the current 
 ### Step 3: Prediction Step ###
 ***Implement all of the elements of the prediction step for the estimator.***
 
-The prediction step should include the state update element (PredictState() function), a correct calculation of the Rgb prime matrix, and a proper update of the state covariance. The acceleration should be accounted for as a command in the calculation of gPrime. The covariance update should follow the classic EKF update equation.
+The prediction step includs the state update element (PredictState() function), a correct calculation of the Rgb prime matrix, and a proper update of the state covariance. The acceleration is accounted for as a command in the calculation of gPrime. The covariance update follows the classic EKF update equation.
+
+PredictState() function was developed as follows:
+```C++
+  V3F accel_global;
+  
+  accel_global = attitude.Rotate_BtoI(accel);
+
+  predictedState(0) += predictedState(3) * dt;
+  predictedState(1) += predictedState(4) * dt;
+  predictedState(2) += predictedState(5) * dt;
+  predictedState(3) += accel_global.x * dt;
+  predictedState(4) += accel_global.y * dt;
+  predictedState(5) += accel_global.z * dt - 9.81f*dt;
+
+  //predictedState(6) = ekfState(6);
+  ```
+8 PredictState tracks
+![Predict State](images/8_PredictState.png)
+
 
 ### Step 4: Magnetometer Update ###
 ***Implement the magnetometer update.***
