@@ -150,4 +150,33 @@ The update properly includes the magnetometer data into the state. The yaw param
 ### Step 5: Closed Loop + GPS Update ###
 ***Implement the GPS update.***
 
-The estimator should correctly incorporate the GPS information to update the current state estimate.
+The estimator correctly incorporateS the GPS information to update the current state estimate.
+
+
+```c++
+void QuadEstimatorEKF::UpdateFromMag(float magYaw)
+{
+  VectorXf z(1), zFromX(1);
+  z(0) = magYaw;
+
+  MatrixXf hPrime(1, QUAD_EKF_NUM_STATES);
+  hPrime.setZero();
+
+  float PI = (float)M_PI;
+
+  if (z(0) - ekfState(6) > PI)
+	  z(0) = z(0) - 2.f*PI;
+  else if (z(0) - ekfState(6) < -PI)
+	  z(0) = z(0) + 2.f*PI;
+  else
+	  z(0) = z(0);
+
+  zFromX(0) = ekfState(6);
+  hPrime(0, 6) = 1;
+
+  Update(z, hPrime, R_Mag, zFromX);
+}
+```
+
+
+![Magnetometer Update](images/10_MagUpdate.png)
