@@ -125,7 +125,7 @@ void QuadEstimatorEKF::Predict(float dt, V3F accel, V3F gyro)
 ### Step 4: Magnetometer Update ###
 ***Implement the magnetometer update.***
 
-The update properly includes the magnetometer data into the state. The yaw parameter was tuned `QYawStd = .1'
+The update properly includes the magnetometer data into the state. The yaw parameter was tuned `QYawStd = .1`
 
 
 ```c++
