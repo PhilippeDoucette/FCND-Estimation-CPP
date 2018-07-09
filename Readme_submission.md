@@ -188,7 +188,8 @@ The parameters were tuned to `GPSPosZStd = 8` and `GPSVelZStd = .8`
 ***Implement the Controller***
 
 
-
+![AddedController1](images/AddedController1.png)
+![AddedController](images/AddedController.png)
 
 
 
