@@ -49,7 +49,7 @@ UpdateFromIMU(V3F accel, V3F gyro)
 ### Step 3: Prediction Step ###
 ***Implement all of the elements of the prediction step for the estimator.***
 
-The prediction step includs the state update element (PredictState() function), a correct calculation of the Rgb prime matrix, and a proper update of the state covariance. The acceleration is accounted for as a command in the calculation of gPrime. The covariance update follows the classic EKF update equation.
+The prediction step includes the state update element (PredictState() function), a correct calculation of the Rgb prime matrix, and a proper update of the state covariance. The acceleration is accounted for as a command in the calculation of gPrime. The covariance update follows the classic EKF update equation.
 
 PredictState() function does a simple integration to advance the state of the control input. 
 ```C++
