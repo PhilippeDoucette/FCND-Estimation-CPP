@@ -187,6 +187,7 @@ The parameters were tuned to `GPSPosZStd = 8` and `GPSVelZStd = .8`
 ### Step 6: Adding Your Controller ###
 ***Implement the Controller***
 
+Added `QuadControl.cpp` to the project and it ran without modification to the `QuadControlParams.txt`.
 
 ![AddedController1](images/AddedController1.png)
 ![AddedController](images/AddedController.png)
