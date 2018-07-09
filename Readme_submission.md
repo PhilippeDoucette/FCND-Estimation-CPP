@@ -118,8 +118,9 @@ void QuadEstimatorEKF::Predict(float dt, V3F accel, V3F gyro)
   ekfCov = gPrime * (ekfCov * gPrimeT) + Q;
 
 ```
-![Predict Covariance](images/9_PredictCovariance.png)
+The parameters were tuned to `QPosXYStd = .01` and `QVelXYStd = .2'
 
+![Predict Covariance](images/9_PredictCovariance.png)
 
 
 ### Step 4: Magnetometer Update ###
