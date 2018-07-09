@@ -178,5 +178,4 @@ void QuadEstimatorEKF::UpdateFromMag(float magYaw)
 }
 ```
 
-
-![Magnetometer Update](images/10_MagUpdate.png)
+![GPS Update](images/11_GPSUpdate.png)
