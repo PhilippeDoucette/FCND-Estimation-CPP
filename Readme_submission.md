@@ -150,7 +150,7 @@ The update properly includes the magnetometer data into the state. The yaw param
 ### Step 5: Closed Loop + GPS Update ###
 ***Implement the GPS update.***
 
-The estimator correctly incorporateS the GPS information to update the current state estimate.
+The estimator correctly incorporates the GPS information to update the current state estimate.
 
 
 ```c++
