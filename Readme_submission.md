@@ -125,7 +125,25 @@ void QuadEstimatorEKF::Predict(float dt, V3F accel, V3F gyro)
 ### Step 4: Magnetometer Update ###
 ***Implement the magnetometer update.***
 
-The update should properly include the magnetometer data into the state. Note that the solution should make sure to correctly measure the angle error between the current state and the magnetometer value (error should be the short way around, not the long way).
+The update properly includs the magnetometer data into the state. 
+```c++
+  void QuadEstimatorEKF::UpdateFromMag(float magYaw)
+  ...
+
+  float PI = (float)M_PI;
+
+  if (z(0) - ekfState(6) > PI)
+	  z(0) = z(0) - 2.f*PI;
+  else if (z(0) - ekfState(6) < -PI)
+	  z(0) = z(0) + 2.f*PI;
+  else
+	  z(0) = z(0);
+
+  zFromX(0) = ekfState(6);
+  hPrime(0, 6) = 1;
+```
+
+![Magnetometer Update](images/10_MagUpdate.png)
 
 ### Step 5: Closed Loop + GPS Update ###
 ***Implement the GPS update.***
