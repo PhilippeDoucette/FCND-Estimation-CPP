@@ -61,14 +61,14 @@ PredictState(VectorXf curState, float dt, V3F accel, V3F gyro)
   
   accel_global = attitude.Rotate_BtoI(accel);
 
-  predictedState(0) += predictedState(3) * dt;
-  predictedState(1) += predictedState(4) * dt;
-  predictedState(2) += predictedState(5) * dt;
-  predictedState(3) += accel_global.x * dt;
-  predictedState(4) += accel_global.y * dt;
-  predictedState(5) += accel_global.z * dt - 9.81f*dt;
+  predictedState(0) = curState(0) + curState(3) * dt;
+  predictedState(1) = curState(1) + curState(4) * dt;
+  predictedState(2) = curState(2) + curState(5) * dt;
+  predictedState(3) = curState(3) + accel_global.x * dt;
+  predictedState(4) = curState(4) + accel_global.y * dt;
+  predictedState(5) = curState(5) - 9.81f*dt + accel_global.z * dt ;
 
-  //predictedState(6) = ekfState(6);
+  predictedState(6) = ekfState(6);
   
   return predictedState;
   ```
