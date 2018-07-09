@@ -118,7 +118,7 @@ void QuadEstimatorEKF::Predict(float dt, V3F accel, V3F gyro)
   ekfCov = gPrime * (ekfCov * gPrimeT) + Q;
 
 ```
-The parameters were tuned to `QPosXYStd = .01` and `QVelXYStd = .2'
+The parameters were tuned to `QPosXYStd = .01` and `QVelXYStd = .2`
 
 ![Predict Covariance](images/9_PredictCovariance.png)
 
@@ -179,4 +179,16 @@ void QuadEstimatorEKF::UpdateFromMag(float magYaw)
 }
 ```
 
+The parameters were tuned to `GPSPosZStd = 8` and `GPSVelZStd = .8`
+
 ![GPS Update](images/11_GPSUpdate.png)
+
+
+### Step 6: Adding Your Controller ###
+***Implement the Controller***
+
+
+
+
+
+
