@@ -1,7 +1,3 @@
-# FCND-Estimation-CPP project Submission #
-
-Submission for the FCND-Estimation-CPP project for Philippe Doucette.
-
 ### Step 1: Sensor Noise ###
 ***Determine the standard deviation of the measurement noise of both GPS X data and Accelerometer X data.***
 
